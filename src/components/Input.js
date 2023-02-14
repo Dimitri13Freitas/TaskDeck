@@ -7,7 +7,7 @@ export const Input = ({ label, ...props }) => {
         {label ? label : "Label Input"}
       </label>
       <input
-        className="mb-4 block py-3 bg-gray-800 rounded"
+        className="lg:w-96 text-gray-100 mb-4 block py-3 pl-3 bg-gray-800 rounded outline-none focus-within:ring-2 ring-cyan-300"
         type="text"
         {...props}
       />

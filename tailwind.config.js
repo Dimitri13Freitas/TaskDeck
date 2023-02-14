@@ -11,6 +11,10 @@ module.exports = {
         400: "#7C7C8A",
         100: "#E1E1E6",
       },
+      cyan: {
+        800: "#81D8E7",
+        300: "#9BE1FB",
+      },
     },
     extend: {
       fontFamily: {
