@@ -1,11 +1,9 @@
 import React from "react";
-import { Button } from "./Button";
 import { ReactComponent } from "../img/logoHeader.svg";
 
 export const Header = () => {
   return (
-    <header className="bg-gray-800 flex">
-      <Button children="Criar" className="" />
+    <header className="bg-gray-800 flex py-3 gap-8 items-center px-20">
       <ReactComponent />
     </header>
   );
