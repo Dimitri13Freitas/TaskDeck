@@ -1,11 +1,17 @@
 import React from "react";
-// import { Button } from "../components/Button";
 import { Header } from "../components/Header";
-import { Plus, DotsThreeOutlineVertical, Star } from "phosphor-react";
+import { Plus } from "phosphor-react";
+import { Modal } from "../components/Modal";
 
 export const Boards = () => {
+  const [modal, setModal] = React.useState(false);
+  const modalRef = React.useRef();
+
   function handleClick(e) {
-    console.log(e);
+    setModal(!modal);
+
+    modalRef.current.style.top = `${e.nativeEvent.layerY + 12}px`;
+    modalRef.current.style.left = `${e.nativeEvent.layerX - 32}px`;
   }
 
   return (
@@ -17,40 +23,21 @@ export const Boards = () => {
           a sua central de tarefas.
         </h1>
         <div className="flex gap-5">
-          <div
+          <button
             onClick={handleClick}
-            className="group border rounded inline-block text-gray-100 border-dashed border-yellow-300 hover:border-solid hover:border-yellow-800 max-w-[243px]"
+            className="flex py-5 pr-14 pl-4 flex-col gap-8 group border rounded relative  border-dashed border-yellow-300 hover:border-solid hover:border-yellow-800 max-w-[245px]"
           >
-            <button className="flex w-full h-full py-5 pr-14 pl-4 flex-col gap-8">
-              <div className="group-hover:bg-yellow-800 bg-yellow-300 bg-opacity-20 rounded">
-                <Plus
-                  className="text-yellow-800 group-hover:text-gray-900"
-                  size={26}
-                />
-              </div>
-              <h3 className="text-lg">Create a new Board</h3>
-            </button>
-          </div>
-          <div
-            onClick={handleClick}
-            className="group rounded inline-block text-gray-100 bg-white border border-gray-900 hover:border-borderT bg-opacity-[.03] max-w-[243px] w-full relative"
-          >
-            <button className="flex w-full h-full pt-2 justify-between pl-4">
-              <h3 className="text-lg">Tarefas do dia</h3>
-              <button className="p-1 mr-1">
-                {/* Select component */}
-                <DotsThreeOutlineVertical
-                  className=" text-gray-400 text-opacity-40"
-                  size={24}
-                  weight="fill"
-                />
-              </button>
-            </button>
-            <button className="p-1 absolute bottom-0 right-0  m-1">
-              {/* checkbox component */}
-              <Star size={24} className=" text-gray-400 text-opacity-40" />
-            </button>
-          </div>
+            <div className="group-hover:bg-yellow-800 bg-yellow-300 bg-opacity-20 rounded ease-in-out duration-200">
+              <Plus
+                className="text-yellow-800 group-hover:text-gray-900"
+                size={26}
+              />
+            </div>
+            <h3 className="text-lg text-gray-100">Create a new Board</h3>
+            <div ref={modalRef} className="absolute">
+              {modal && <Modal />}
+            </div>
+          </button>
         </div>
       </div>
     </div>
