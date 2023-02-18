@@ -1,10 +1,34 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { Button } from "../components/Button";
-import { Input } from "../components/Input";
+import { Form } from "../components/Form";
 import { ReactComponent } from "../img/logo.svg";
 
+const forms = [
+  {
+    id: "email",
+    label: "Email",
+    type: "email",
+    placeholder: "Digite seu e-mail",
+  },
+  {
+    id: "senha",
+    label: "Senha",
+    type: "password",
+    placeholder: "********",
+  },
+];
+
 export const Login = () => {
+  const [form, setForm] = React.useState(() => {
+    return forms.reduce((acc, e) => {
+      return {
+        ...acc,
+        [e.id]: "",
+      };
+    }, {});
+  });
+
+  console.log(form);
   const navigate = useNavigate();
 
   function handleSubmit(e) {
@@ -21,11 +45,12 @@ export const Login = () => {
         </h1>
         <p className="text-gray-400">Faça o login e começe a usar</p>
       </header>
-      <form className="mt-8" onSubmit={handleSubmit}>
-        <Input label="Email" type="email" placeholder="Digite seu e-mail" />
-        <Input label="Senha" type="password" placeholder="********" />
-        <Button className="w-full py-3" children="Entrar" />
-      </form>
+      <Form
+        setForm={setForm}
+        onSubmit={handleSubmit}
+        options={forms}
+        buttonLabel="Entrar"
+      />
       <Link className="text-gray-400 underline mt-8 hover:text-gray-100">
         Esqueçeu a senha?
       </Link>
