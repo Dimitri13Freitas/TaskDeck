@@ -11,9 +11,11 @@ export const Modal = ({ cordenates }) => {
     >
       <div className="w-7 h-7 -top-2 rotate-45 left-4 bg-gray-800 absolute"></div>
       <Input
+        id="modal"
         classLabel="text-center text-gray-400 "
         label="Digite o nome do seu novo board."
         className="lg:w-40 py-1 pl-1 bg-gray-900"
+        focus={cordenates.istrue}
       />
       <Button children="Criar" className="py-1 px-11" />
     </div>

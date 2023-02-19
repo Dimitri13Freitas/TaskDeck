@@ -11,11 +11,11 @@ export const Boards = () => {
     y: "",
   });
 
-  function handleClick(e) {
+  function handleClick({ nativeEvent }) {
     setModal({
       istrue: !modal.istrue,
-      y: e.nativeEvent.clientY + 14,
-      x: e.nativeEvent.clientX - 28,
+      y: nativeEvent.clientY + 14,
+      x: nativeEvent.clientX - 28,
     });
   }
 
@@ -50,7 +50,7 @@ export const Boards = () => {
         className={
           modal.istrue
             ? "bg-black bg-opacity-30 absolute w-full top-0 h-full"
-            : ""
+            : null
         }
       >
         {modal.istrue && <Modal cordenates={modal} />}

@@ -28,10 +28,10 @@ export const Login = () => {
     }, {});
   });
 
-  console.log(form);
   const navigate = useNavigate();
 
   function handleSubmit(e) {
+    console.log(form);
     e.preventDefault();
     navigate("boards");
   }
