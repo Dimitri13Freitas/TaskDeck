@@ -2,9 +2,13 @@ import React from "react";
 import { Input } from "./Input";
 import { Button } from "./Button";
 
-export const Modal = ({ ...props }) => {
+export const Modal = ({ cordenates }) => {
   return (
-    <div className="relative flex flex-col items-center py-4 px-2 rounded justify-center bg-gray-800 max-w-[180px]">
+    <div
+      onClick={(e) => e.stopPropagation()}
+      style={{ top: `${cordenates.y}px`, left: `${cordenates.x}px` }}
+      className="relative flex flex-col z-30 items-center py-4 px-2 rounded justify-center bg-gray-800 max-w-[180px]"
+    >
       <div className="w-7 h-7 -top-2 rotate-45 left-4 bg-gray-800 absolute"></div>
       <Input
         classLabel="text-center text-gray-400 "
