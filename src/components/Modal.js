@@ -1,8 +1,30 @@
 import React from "react";
 import { Input } from "./Input";
 import { Button } from "./Button";
+import { GlobalContext } from "./GlobalContext";
 
-export const Modal = ({ cordenates }) => {
+export const Modal = ({ setModal, cordenates }) => {
+  const { board, setBoard } = React.useContext(GlobalContext);
+  const [boardName, setBoardName] = React.useState("");
+
+  function normalizeString(str) {
+    return str
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .replace(/\s+/g, "-")
+      .toLowerCase();
+  }
+
+  function handleClick() {
+    if (boardName !== "") {
+      setModal(!cordenates.istrue);
+      setBoardName("");
+      setBoard([
+        ...board,
+        { tittle: boardName, id: normalizeString(boardName) },
+      ]);
+    }
+  }
   return (
     <div
       onClick={(e) => e.stopPropagation()}
@@ -11,13 +33,15 @@ export const Modal = ({ cordenates }) => {
     >
       <div className="w-7 h-7 -top-2 rotate-45 left-4 bg-gray-800 absolute"></div>
       <Input
+        onChange={({ target }) => setBoardName(target.value)}
+        value={boardName}
         id="modal"
         classLabel="text-center text-gray-400 "
         label="Digite o nome do seu novo board."
         className="lg:w-40 py-1 pl-1 bg-gray-900"
         focus={cordenates.istrue}
       />
-      <Button children="Criar" className="py-1 px-11" />
+      <Button onClick={handleClick} children="Criar" className="py-1 px-11" />
     </div>
   );
 };

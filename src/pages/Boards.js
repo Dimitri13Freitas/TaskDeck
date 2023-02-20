@@ -2,8 +2,12 @@ import React from "react";
 import { Header } from "../components/Header";
 import { Plus } from "phosphor-react";
 import { Modal } from "../components/Modal";
+import { Board } from "../components/Board";
+import { GlobalContext } from "../components/GlobalContext";
 
 export const Boards = () => {
+  const { board } = React.useContext(GlobalContext);
+
   const modalRef = React.useRef();
   const [modal, setModal] = React.useState({
     istrue: false,
@@ -28,20 +32,23 @@ export const Boards = () => {
           a sua central de tarefas.
         </h1>
         <div className="flex gap-5">
-          <div>
-            <button
-              onClick={handleClick}
-              className="flex py-5 absolute z-20 pr-14 pl-4 flex-col gap-8 group border rounded border-dashed border-yellow-300 hover:border-solid bg-gray-900 hover:border-yellow-800 max-w-[245px]"
-            >
-              <div className="group-hover:bg-yellow-800 bg-yellow-300 bg-opacity-20 rounded ease-in-out duration-200">
-                <Plus
-                  className="text-yellow-800 group-hover:text-gray-900"
-                  size={26}
-                />
-              </div>
-              <h3 className="text-lg text-gray-100">Create a new Board</h3>
-            </button>
-          </div>
+          {/* <div> */}
+          <button
+            onClick={handleClick}
+            className="flex py-5 pr-14 pl-4 flex-col gap-8 group border rounded border-dashed border-yellow-300 hover:border-solid  hover:border-yellow-800 max-w-[245px] w-full"
+          >
+            <div className="group-hover:bg-yellow-800 bg-yellow-300 bg-opacity-20 rounded ease-in-out duration-200">
+              <Plus
+                className="text-yellow-800 group-hover:text-gray-900"
+                size={26}
+              />
+            </div>
+            <h3 className="text-lg text-gray-100">Create a new Board</h3>
+          </button>
+          {/* </div> */}
+          {board.map((e) => (
+            <Board key={e.id} tittle={e.tittle} />
+          ))}
         </div>
       </div>
       <div
@@ -53,7 +60,7 @@ export const Boards = () => {
             : null
         }
       >
-        {modal.istrue && <Modal cordenates={modal} />}
+        {modal.istrue && <Modal setModal={setModal} cordenates={modal} />}
       </div>
     </div>
   );

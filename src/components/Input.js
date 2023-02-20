@@ -11,7 +11,7 @@ export const Input = ({
   const inputRef = React.useRef();
 
   React.useEffect(() => {
-    inputRef.current.focus();
+    if (focus) inputRef.current.focus();
   }, [focus]);
 
   return (
