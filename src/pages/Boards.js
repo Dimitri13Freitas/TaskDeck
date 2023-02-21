@@ -3,7 +3,8 @@ import { Header } from "../components/Header";
 import { Plus } from "phosphor-react";
 import { Modal } from "../components/Modal";
 import { Board } from "../components/Board";
-import { GlobalContext } from "../components/GlobalContext";
+// import { GlobalContext } from "../components/GlobalContext";
+import { GlobalContext } from "../GlobalContext";
 
 export const Boards = () => {
   const { board } = React.useContext(GlobalContext);
@@ -26,13 +27,12 @@ export const Boards = () => {
   return (
     <div className="h-screen relative w-screen bg-gray-900">
       <Header />
-      <div className="max-w-5xl m-auto">
+      <div className="max-w-[1040px] m-auto">
         <h1 className="text-gray-400 text-2xl my-12">
           <span className="text-gray-100 font-bold">Usuário x</span>, Bem-vindo
           a sua central de tarefas.
         </h1>
-        <div className="flex gap-5">
-          {/* <div> */}
+        <div className="flex flex-wrap gap-5">
           <button
             onClick={handleClick}
             className="flex py-5 pr-14 pl-4 flex-col gap-8 group border rounded border-dashed border-yellow-300 hover:border-solid  hover:border-yellow-800 max-w-[245px] w-full"
@@ -45,9 +45,8 @@ export const Boards = () => {
             </div>
             <h3 className="text-lg text-gray-100">Create a new Board</h3>
           </button>
-          {/* </div> */}
           {board.map((e) => (
-            <Board key={e.id} tittle={e.tittle} />
+            <Board key={e.id} id={e.id} tittle={e.tittle} />
           ))}
         </div>
       </div>
@@ -56,7 +55,7 @@ export const Boards = () => {
         ref={modalRef}
         className={
           modal.istrue
-            ? "bg-black bg-opacity-30 absolute w-full top-0 h-full"
+            ? "bg-black transition-colors duration-150 ease-in-out bg-opacity-30 absolute w-full top-0 h-full"
             : null
         }
       >

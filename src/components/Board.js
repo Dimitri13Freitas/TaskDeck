@@ -1,13 +1,29 @@
 import React from "react";
 import { DotsThreeOutlineVertical, Star } from "phosphor-react";
+import { useNavigate } from "react-router-dom";
+import { GlobalContext } from "../GlobalContext";
 
-export const Board = ({ tittle }) => {
+export const Board = ({ id, tittle, ...props }) => {
+  const navigate = useNavigate();
+  const { setTargetBoard } = React.useContext(GlobalContext);
+
+  function handleClick({ target }) {
+    setTargetBoard(target.id);
+    navigate(target.id);
+  }
+
   return (
-    <div className="group rounded inline-block text-gray-100 bg-white border border-gray-900 hover:border-borderT bg-opacity-[.03] max-w-[245px] w-full relative">
-      <button className="flex w-full h-full pt-2 justify-between pl-4">
-        <h3 className="text-lg">{tittle}</h3>
+    <div
+      onClick={handleClick}
+      to={id}
+      className="rounded text-gray-100 bg-white border border-gray-900 hover:border-borderT bg-opacity-[.03] max-w-[245px] min-h-[128px] w-full relative"
+      {...props}
+    >
+      <button id={id} className="flex w-full h-full pt-2 justify-between pl-4">
+        <h3 className="text-lg max-w-[185px] break-words text-left">
+          {tittle}
+        </h3>
         <div className="p-1 mr-1">
-          {/* Select component */}
           <DotsThreeOutlineVertical
             className=" text-gray-400 text-opacity-40"
             size={24}
@@ -16,7 +32,6 @@ export const Board = ({ tittle }) => {
         </div>
       </button>
       <button className="p-1 absolute bottom-0 right-0  m-1">
-        {/* checkbox component */}
         <Star size={24} className=" text-gray-400 text-opacity-40" />
       </button>
     </div>

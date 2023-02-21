@@ -1,7 +1,7 @@
 import React from "react";
 import { Input } from "./Input";
 import { Button } from "./Button";
-import { GlobalContext } from "./GlobalContext";
+import { GlobalContext } from "../GlobalContext";
 
 export const Modal = ({ setModal, cordenates }) => {
   const { board, setBoard } = React.useContext(GlobalContext);
@@ -25,6 +25,11 @@ export const Modal = ({ setModal, cordenates }) => {
       ]);
     }
   }
+
+  function comfirm({ keyCode }) {
+    if (keyCode === 13) handleClick();
+  }
+
   return (
     <div
       onClick={(e) => e.stopPropagation()}
@@ -33,6 +38,7 @@ export const Modal = ({ setModal, cordenates }) => {
     >
       <div className="w-7 h-7 -top-2 rotate-45 left-4 bg-gray-800 absolute"></div>
       <Input
+        onKeyDown={comfirm}
         onChange={({ target }) => setBoardName(target.value)}
         value={boardName}
         id="modal"
