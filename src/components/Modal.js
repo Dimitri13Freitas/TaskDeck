@@ -21,7 +21,7 @@ export const Modal = ({ setModal, cordenates }) => {
       setBoardName("");
       setBoard([
         ...board,
-        { tittle: boardName, id: normalizeString(boardName) },
+        { title: boardName, id: normalizeString(boardName) },
       ]);
     }
   }

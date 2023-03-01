@@ -1,29 +1,21 @@
 import React from "react";
 import "./index.css";
-import { Rotas } from "./components/Rotas";
-import { GlobalStorage } from "./GlobalContext";
-
-// export const GlobalContext = React.createContext();
-
-// const GlobalStorage = ({ children }) => {
-//   const [targetBoard, setTargetBoard] = React.useState(null);
-//   const [board, setBoard] = React.useState([
-//     { tittle: "Tarefas do dia", id: "tarefas-do-dia" },
-//   ]);
-
-//   return (
-//     <GlobalContext.Provider
-//       value={{ board, setBoard, setTargetBoard, targetBoard }}
-//     >
-//       {children}
-//     </GlobalContext.Provider>
-//   );
-// };
+import { GlobalContext } from "./GlobalContext";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Login } from "./pages/Login";
+import { Boards } from "./pages/Boards";
+import { Kanban } from "./pages/Kanban";
 
 export function App() {
+  const { targetBoard } = React.useContext(GlobalContext);
+
   return (
-    <GlobalStorage>
-      <Rotas />
-    </GlobalStorage>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Login />} />
+        <Route path="boards" element={<Boards />} />
+        <Route path={"boards/:id"} element={<Kanban id={targetBoard} />} />
+      </Routes>
+    </BrowserRouter>
   );
 }

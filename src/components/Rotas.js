@@ -12,10 +12,7 @@ export const Rotas = () => {
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="boards" element={<Boards />} />
-        <Route
-          path={`boards/${targetBoard}`}
-          element={<Kanban id={targetBoard} />}
-        />
+        <Route path={"boards/:id"} element={<Kanban id={targetBoard} />} />
       </Routes>
     </BrowserRouter>
   );

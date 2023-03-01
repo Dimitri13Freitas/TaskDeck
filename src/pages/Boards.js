@@ -3,7 +3,6 @@ import { Header } from "../components/Header";
 import { Plus } from "phosphor-react";
 import { Modal } from "../components/Modal";
 import { Board } from "../components/Board";
-// import { GlobalContext } from "../components/GlobalContext";
 import { GlobalContext } from "../GlobalContext";
 
 export const Boards = () => {
@@ -46,7 +45,7 @@ export const Boards = () => {
             <h3 className="text-lg text-gray-100">Create a new Board</h3>
           </button>
           {board.map((e) => (
-            <Board key={e.id} id={e.id} tittle={e.tittle} />
+            <Board key={e.id} id={e.id} title={e.title} />
           ))}
         </div>
       </div>
