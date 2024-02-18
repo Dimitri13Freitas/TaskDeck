@@ -21,3 +21,4 @@ export const GlobalStorage = ({ children }) => {
     </GlobalContext.Provider>
   );
 };
+
