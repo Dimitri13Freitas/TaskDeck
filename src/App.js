@@ -7,7 +7,11 @@ import { Boards } from "./pages/Boards";
 import { Kanban } from "./pages/Kanban";
 
 export function App() {
-  const { targetBoard } = React.useContext(GlobalContext);
+  const { board, targetBoard } = React.useContext(GlobalContext);
+
+  // console.log(board);
+
+  // const contentData = board.filter((e) => e.id === targetBoard);
 
   return (
     <BrowserRouter>

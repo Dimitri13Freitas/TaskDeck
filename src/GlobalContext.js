@@ -7,6 +7,7 @@ export const GlobalStorage = ({ children }) => {
   const [board, setBoard] = React.useState([
     { title: "teste 01", id: "teste-01" },
     { title: "teste 02", id: "teste-02" },
+    { title: "teste 03", id: "teste-03" },
   ]);
 
   // React.useEffect(() => {
@@ -21,4 +22,3 @@ export const GlobalStorage = ({ children }) => {
     </GlobalContext.Provider>
   );
 };
-

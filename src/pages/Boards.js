@@ -24,7 +24,7 @@ export const Boards = () => {
   }
 
   return (
-    <div className="h-screen relative w-screen bg-gray-900">
+    <div className="h-screen w-screen bg-gray-900">
       <Header />
       <div className="max-w-[1040px] m-auto">
         <h1 className="text-gray-400 text-2xl my-12">
@@ -63,4 +63,3 @@ export const Boards = () => {
     </div>
   );
 };
-
