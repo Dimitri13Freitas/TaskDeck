@@ -44,9 +44,9 @@ export const Boards = () => {
             </div>
             <h3 className="text-lg text-gray-100">Create a new Board</h3>
           </button>
-          {board.map((e) => (
-            <Board key={e.id} id={e.id} title={e.title} />
-          ))}
+          {board.map((e) => {
+            return <Board key={e.id} kanban={e} />;
+          })}
         </div>
       </div>
       <div

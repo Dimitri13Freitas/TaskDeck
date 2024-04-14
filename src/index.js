@@ -5,10 +5,9 @@ import { GlobalStorage } from "./GlobalContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <React.StrictMode>
-    <GlobalStorage>
-      <App />
-    </GlobalStorage>
-  </React.StrictMode>,
+  // <React.StrictMode>
+  <GlobalStorage>
+    <App />
+  </GlobalStorage>,
+  // </React.StrictMode>,
 );
-

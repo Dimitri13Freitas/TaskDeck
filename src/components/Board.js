@@ -3,7 +3,7 @@ import { DotsThreeOutlineVertical, Star } from "phosphor-react";
 import { Link } from "react-router-dom";
 import { GlobalContext } from "../GlobalContext";
 
-export const Board = ({ id, title, ...props }) => {
+export const Board = ({ kanban, ...props }) => {
   const { setTargetBoard } = React.useContext(GlobalContext);
 
   const dragEvents = {
@@ -22,15 +22,19 @@ export const Board = ({ id, title, ...props }) => {
     <Link
       {...dragEvents}
       onClick={(e) => setTargetBoard(e.target.id)}
-      onMouseUp={() => console.log("teeste")}
       draggable="true"
-      to={id}
-      id={id}
+      to={kanban.id}
+      id={kanban.id}
       className="rounded text-gray-100 bg-white group border border-gray-900 hover:border-borderT bg-opacity-[.03] max-w-[245px] min-h-[128px] w-full relative"
       {...props}
     >
-      <button id={id} className="flex w-full h-full pt-2 justify-between pl-4">
-        <h3 className="text-lg max-w-[185px] break-words text-left">{title}</h3>
+      <button
+        id={kanban.id}
+        className="flex w-full h-full pt-2 justify-between pl-4"
+      >
+        <h3 className="text-lg max-w-[185px] break-words text-left">
+          {kanban.title}
+        </h3>
         <div className="p-1 mr-1">
           <DotsThreeOutlineVertical
             className="text-gray-400 group-hover:block hidden text-opacity-40"
