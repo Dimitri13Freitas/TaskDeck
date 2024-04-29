@@ -1,7 +1,7 @@
 import React from "react";
 import { Header } from "../components/Header";
 import { GlobalContext } from "../GlobalContext";
-import { Star, DotsThreeOutlineVertical } from "phosphor-react";
+import { Star, DotsThreeOutlineVertical } from "@phosphor-icons/react";
 
 export const Kanban = ({ id }) => {
   const { board, targetBoard } = React.useContext(GlobalContext);

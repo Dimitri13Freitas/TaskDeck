@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Form } from "../components/Form";
-import { ReactComponent } from "../img/logo.svg";
+// import { ReactComponent } from "../assets/logo.svg";
 
 const forms = [
   {
@@ -39,7 +39,7 @@ export const Login = () => {
   return (
     <div className="h-screen w-screen bg-gray-900 flex flex-col items-center justify-center">
       <header className="flex flex-col items-center justify-center">
-        <ReactComponent className="block" />
+        {/* <ReactComponent className="block" /> */}
         <h1 className="text-gray-100 mt-3 text-center text-2xl font-bold">
           Task Deck
         </h1>

@@ -1,5 +1,5 @@
 import React from "react";
-import { DotsThreeOutlineVertical, Star } from "phosphor-react";
+import { DotsThreeOutlineVertical, Star } from "@phosphor-icons/react";
 import { Link } from "react-router-dom";
 import { GlobalContext } from "../GlobalContext";
 

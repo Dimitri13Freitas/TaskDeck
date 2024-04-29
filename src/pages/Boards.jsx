@@ -1,6 +1,6 @@
 import React from "react";
 import { Header } from "../components/Header";
-import { Plus } from "phosphor-react";
+import { Plus } from "@phosphor-icons/react";
 import { Modal } from "../components/Modal";
 import { Board } from "../components/Board";
 import { GlobalContext } from "../GlobalContext";
