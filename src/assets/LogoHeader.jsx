@@ -12,22 +12,22 @@ export const LogoHeader = () => {
       <path
         d="M12.9897 30.7423L18.4021 22.9485L38.7526 22.9485L41.7835 20.7835L53.9072 20.7835L49.1443 28.5773L39.1856 28.5773L26.4124 28.5773L24.0309 30.7423L12.9897 30.7423Z"
         fill="white"
-        fill-opacity="0.1"
+        fillOpacity="0.1"
       />
       <path
         d="M0 41.701L5.41237 33.9072L25.7629 33.9072L28.7938 31.7423L40.9175 31.7423L36.1546 39.5361L26.1959 39.5361L13.4227 39.5361L11.0412 41.701L0 41.701Z"
         fill="white"
-        fill-opacity="0.1"
+        fillOpacity="0.1"
       />
       <path
         d="M43.5154 12.9897L38.1031 20.7835L17.7526 20.7835L14.7216 22.9484L2.59793 22.9484L7.36082 15.1546L17.3196 15.1546L30.0928 15.1546L32.4742 12.9897L43.5154 12.9897Z"
         fill="white"
-        fill-opacity="0.1"
+        fillOpacity="0.1"
       />
       <path
         d="M53.4742 1.29901L48.0619 9.09282L27.7114 9.09283L24.6804 11.2578L12.5567 11.2578L17.3196 3.46396L27.2784 3.46396L40.0516 3.46396L42.433 1.29901L53.4742 1.29901Z"
         fill="white"
-        fill-opacity="0.1"
+        fillOpacity="0.1"
       />
       <path
         d="M14.2886 32.0412L19.701 24.2474L40.0515 24.2474L43.0824 22.0825L55.2061 22.0825L50.4433 29.8763L40.4845 29.8763L27.7113 29.8763L25.3299 32.0412L14.2886 32.0412Z"
@@ -58,8 +58,8 @@ export const LogoHeader = () => {
           y2="22.0825"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#BDFF00" />
-          <stop offset="1" stop-color="#CBFF37" />
+          <stop stopColor="#BDFF00" />
+          <stop offset="1" stopColor="#CBFF37" />
         </linearGradient>
         <linearGradient
           id="paint1_linear_109_12"
@@ -69,8 +69,8 @@ export const LogoHeader = () => {
           y2="33.0412"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#BDFF00" />
-          <stop offset="1" stop-color="#CBFF37" />
+          <stop stopColor="#BDFF00" />
+          <stop offset="1" stopColor="#CBFF37" />
         </linearGradient>
         <linearGradient
           id="paint2_linear_109_12"
@@ -80,8 +80,8 @@ export const LogoHeader = () => {
           y2="21.6495"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#BDFF00" />
-          <stop offset="1" stop-color="#CBFF37" />
+          <stop stopColor="#BDFF00" />
+          <stop offset="1" stopColor="#CBFF37" />
         </linearGradient>
         <linearGradient
           id="paint3_linear_109_12"
@@ -91,8 +91,8 @@ export const LogoHeader = () => {
           y2="9.95877"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#BDFF00" />
-          <stop offset="1" stop-color="#CBFF37" />
+          <stop stopColor="#BDFF00" />
+          <stop offset="1" stopColor="#CBFF37" />
         </linearGradient>
       </defs>
     </svg>

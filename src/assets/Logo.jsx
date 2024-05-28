@@ -12,22 +12,22 @@ export const Logo = () => {
       <path
         d="M28.094 66.4891L39.7998 49.6327L83.8137 49.6327L90.3689 44.9504L116.59 44.9504L106.289 61.8068L84.7501 61.8068L57.1244 61.8068L51.9738 66.4891L28.094 66.4891Z"
         fill="white"
-        fill-opacity="0.1"
+        fillOpacity="0.1"
       />
       <path
         d="M0 90.1906L11.7058 73.3343L55.7197 73.3343L62.275 68.6519L88.496 68.6519L78.1949 85.5083L56.6562 85.5083L29.0304 85.5083L23.8799 90.1906L0 90.1906Z"
         fill="white"
-        fill-opacity="0.1"
+        fillOpacity="0.1"
       />
       <path
         d="M94.1148 28.094L82.409 44.9503L38.3951 44.9504L31.8398 49.6327L5.61878 49.6327L15.9199 32.7763L37.4586 32.7763L65.0844 32.7763L70.2349 28.094L94.1148 28.094Z"
         fill="white"
-        fill-opacity="0.1"
+        fillOpacity="0.1"
       />
       <path
         d="M115.654 2.80948L103.948 19.6659L59.9339 19.6659L53.3786 24.3482L27.1576 24.3482L37.4587 7.49182L58.9974 7.49181L86.6232 7.49181L91.7737 2.80948L115.654 2.80948Z"
         fill="white"
-        fill-opacity="0.1"
+        fillOpacity="0.1"
       />
       <path
         d="M30.9033 69.2985L42.6091 52.4421L86.623 52.4421L93.1783 47.7597L119.399 47.7597L109.098 64.6161L87.5595 64.6161L59.9338 64.6161L54.7832 69.2985L30.9033 69.2985Z"
@@ -54,8 +54,8 @@ export const Logo = () => {
           y2="47.7597"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#BDFF00" />
-          <stop offset="1" stop-color="#CBFF37" />
+          <stop stopColor="#BDFF00" />
+          <stop offset="1" stopColor="#CBFF37" />
         </linearGradient>
         <linearGradient
           id="paint1_linear_109_3"
@@ -65,8 +65,8 @@ export const Logo = () => {
           y2="71.4613"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#BDFF00" />
-          <stop offset="1" stop-color="#CBFF37" />
+          <stop stopColor="#BDFF00" />
+          <stop offset="1" stopColor="#CBFF37" />
         </linearGradient>
         <linearGradient
           id="paint2_linear_109_3"
@@ -76,8 +76,8 @@ export const Logo = () => {
           y2="46.8233"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#BDFF00" />
-          <stop offset="1" stop-color="#CBFF37" />
+          <stop stopColor="#BDFF00" />
+          <stop offset="1" stopColor="#CBFF37" />
         </linearGradient>
         <linearGradient
           id="paint3_linear_109_3"
@@ -87,8 +87,8 @@ export const Logo = () => {
           y2="21.5387"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#BDFF00" />
-          <stop offset="1" stop-color="#CBFF37" />
+          <stop stopColor="#BDFF00" />
+          <stop offset="1" stopColor="#CBFF37" />
         </linearGradient>
       </defs>
     </svg>
