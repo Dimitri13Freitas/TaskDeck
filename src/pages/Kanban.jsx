@@ -7,7 +7,9 @@ export const Kanban = ({ id }) => {
   const { board, targetBoard } = React.useContext(GlobalContext);
   const [teste, setTeste] = React.useState(0);
 
-  function handleClick() {}
+  function handleClick() {
+    console.log("seila");
+  }
 
   return (
     <div className="bg-gray-900 w-screen h-screen">

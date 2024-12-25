@@ -2,6 +2,7 @@ import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Form } from "../components/Form";
 import { Logo } from "../assets/Logo";
+import { EndPoints } from "../../supabase";
 
 const forms = [
   {
@@ -19,6 +20,7 @@ const forms = [
 ];
 
 export const Login = () => {
+  const supa = new EndPoints();
   const [form, setForm] = React.useState(() => {
     return forms.reduce((acc, e) => {
       return {
@@ -31,9 +33,10 @@ export const Login = () => {
   const navigate = useNavigate();
 
   function handleSubmit(e) {
-    console.log(form);
     e.preventDefault();
-    navigate("boards");
+    supa.login();
+    // console.log(form);
+    // navigate("boards");
   }
 
   return (
@@ -43,7 +46,7 @@ export const Login = () => {
         <h1 className="text-gray-100 mt-3 text-center text-2xl font-bold">
           Task Deck
         </h1>
-        <p className="text-gray-400">Faça o login e começe a usar</p>
+        <p className="text-gray-400 mb-4">Faça o login e começe a usar</p>
       </header>
       <Form
         setForm={setForm}
