@@ -6,6 +6,7 @@ import { Login } from "./pages/Login";
 import { Boards } from "./pages/Boards";
 import { Kanban } from "./pages/Kanban";
 import { EndPoints } from "../supabase";
+import { Cadastro } from "./pages/Cadastro";
 
 export function App() {
   const supa = new EndPoints();
@@ -15,6 +16,7 @@ export function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Login />} />
+        <Route path="/cadastro" element={<Cadastro />} />
         <Route path="boards" element={<Boards />} />
         <Route path={"boards/:id"} element={<Kanban id={targetBoard} />} />
       </Routes>

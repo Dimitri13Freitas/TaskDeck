@@ -1,24 +1,21 @@
 import React from "react";
 
 export const Input = ({
-  focus,
   id,
   className,
-  classLabel,
   label,
-  ...props
+  value,
+  type,
+  onBlur,
+  onChange,
+  placeholder,
+  error,
 }) => {
-  const inputRef = React.useRef();
-
-  React.useEffect(() => {
-    if (focus) inputRef.current.focus();
-  }, [focus]);
-
   return (
     <>
       <label
         htmlFor={id}
-        className={classLabel + " mb-3 text-base text-gray-100 block z-10"}
+        className={" mb-1 text-base text-gray-100 block z-10"}
       >
         {label ? label : "Label Input"}
       </label>
@@ -26,11 +23,15 @@ export const Input = ({
         id={id}
         className={
           className +
-          " bg-gray-800 block mb-4 rounded outline-none focus-within:ring-2 ring-yellow-300 text-gray-100"
+          " bg-gray-800 m-0 block rounded outline-none focus-within:ring-2 ring-yellow-300 text-gray-100"
         }
-        ref={inputRef}
-        {...props}
+        onChange={onChange}
+        onBlur={onBlur}
+        placeholder={placeholder}
+        type={type}
+        value={value}
       />
+      <p className="text-red-900 text-xs mb-4 mt-1">{error}</p>
     </>
   );
 };

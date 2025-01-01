@@ -16,6 +16,9 @@ export default {
         800: "#C5FF21",
         300: "#CBFF37",
       },
+      red: {
+        900: "#C00000",
+      },
     },
     extend: {
       fontFamily: {

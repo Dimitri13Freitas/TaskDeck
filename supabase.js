@@ -6,8 +6,14 @@ export const supabase = createClient(
 );
 
 export class EndPoints {
-  login() {
-    console.log(supabase);
-    console.log("login is started!!");
+  async login(credentials) {
+    const returnLogin = await supabase.auth.signInWithPassword(credentials);
+    return returnLogin;
+  }
+  async createUser(credentials) {
+    const registerUser = supabase.auth.signUp(credentials);
+
+    return registerUser;
+    // console.log("Cria usuário");
   }
 }

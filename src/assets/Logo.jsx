@@ -20,34 +20,34 @@ export const Logo = () => {
         fillOpacity="0.1"
       />
       <path
-        d="M94.1148 28.094L82.409 44.9503L38.3951 44.9504L31.8398 49.6327L5.61878 49.6327L15.9199 32.7763L37.4586 32.7763L65.0844 32.7763L70.2349 28.094L94.1148 28.094Z"
+        d="M94.1148 28.094L82.409 44.9503L38.3951 44.9504L31.8398 49.6327L5.6188 49.6327L15.9199 32.7763L37.4586 32.7763L65.0844 32.7763L70.2349 28.094L94.1148 28.094Z"
         fill="white"
         fillOpacity="0.1"
       />
       <path
-        d="M115.654 2.80948L103.948 19.6659L59.9339 19.6659L53.3786 24.3482L27.1576 24.3482L37.4587 7.49182L58.9974 7.49181L86.6232 7.49181L91.7737 2.80948L115.654 2.80948Z"
+        d="M115.654 2.80948L103.948 19.6659L59.9339 19.6659L53.3786 24.3482L27.1576 24.3482L37.4587 7.49182L58.9974 7.49181L86.6231 7.49181L91.7737 2.80948L115.654 2.80948Z"
         fill="white"
         fillOpacity="0.1"
       />
       <path
         d="M30.9033 69.2985L42.6091 52.4421L86.623 52.4421L93.1783 47.7597L119.399 47.7597L109.098 64.6161L87.5595 64.6161L59.9338 64.6161L54.7832 69.2985L30.9033 69.2985Z"
-        fill="url(#paint0_linear_109_3)"
+        fill="url(#paint0_linear_1204_2)"
       />
       <path
         d="M2.80936 93L14.5152 76.1436L58.5291 76.1436L65.0843 71.4613L91.3054 71.4613L81.0042 88.3177L59.4655 88.3177L31.8398 88.3177L26.6892 93L2.80936 93Z"
-        fill="url(#paint1_linear_109_3)"
+        fill="url(#paint1_linear_1204_2)"
       />
       <path
-        d="M91.3054 25.2846L79.5996 42.141L35.5857 42.141L29.0305 46.8233L2.80943 46.8233L13.1105 29.9669L34.6493 29.9669L62.275 29.9669L67.4256 25.2846L91.3054 25.2846Z"
-        fill="url(#paint2_linear_109_3)"
+        d="M91.3054 25.2846L79.5996 42.141L35.5857 42.141L29.0305 46.8233L2.80941 46.8233L13.1105 29.9669L34.6492 29.9669L62.275 29.9669L67.4255 25.2846L91.3054 25.2846Z"
+        fill="url(#paint2_linear_1204_2)"
       />
       <path
         d="M112.844 2.25138e-06L101.138 16.8564L57.1244 16.8564L50.5691 21.5387L24.3481 21.5387L34.6492 4.68234L56.1879 4.68234L83.8137 4.68233L88.9642 3.13147e-06L112.844 2.25138e-06Z"
-        fill="url(#paint3_linear_109_3)"
+        fill="url(#paint3_linear_1204_2)"
       />
       <defs>
         <linearGradient
-          id="paint0_linear_109_3"
+          id="paint0_linear_1204_2"
           x1="30.9033"
           y1="69.2985"
           x2="118.931"
@@ -55,10 +55,10 @@ export const Logo = () => {
           gradientUnits="userSpaceOnUse"
         >
           <stop stopColor="#BDFF00" />
-          <stop offset="1" stopColor="#CBFF37" />
+          <stop offset="1" stopColor="#29292B" />
         </linearGradient>
         <linearGradient
-          id="paint1_linear_109_3"
+          id="paint1_linear_1204_2"
           x1="2.80936"
           y1="93"
           x2="90.8371"
@@ -66,21 +66,21 @@ export const Logo = () => {
           gradientUnits="userSpaceOnUse"
         >
           <stop stopColor="#BDFF00" />
-          <stop offset="1" stopColor="#CBFF37" />
+          <stop offset="1" stopColor="#29292B" />
         </linearGradient>
         <linearGradient
-          id="paint2_linear_109_3"
+          id="paint2_linear_1204_2"
           x1="91.3054"
           y1="25.2846"
-          x2="3.27766"
+          x2="3.27764"
           y2="46.8233"
           gradientUnits="userSpaceOnUse"
         >
           <stop stopColor="#BDFF00" />
-          <stop offset="1" stopColor="#CBFF37" />
+          <stop offset="1" stopColor="#29292B" />
         </linearGradient>
         <linearGradient
-          id="paint3_linear_109_3"
+          id="paint3_linear_1204_2"
           x1="112.844"
           y1="0"
           x2="24.8163"
@@ -88,7 +88,7 @@ export const Logo = () => {
           gradientUnits="userSpaceOnUse"
         >
           <stop stopColor="#BDFF00" />
-          <stop offset="1" stopColor="#CBFF37" />
+          <stop offset="1" stopColor="#29292B" />
         </linearGradient>
       </defs>
     </svg>
