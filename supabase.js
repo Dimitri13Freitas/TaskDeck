@@ -10,8 +10,15 @@ export class EndPoints {
     const returnLogin = await supabase.auth.signInWithPassword(credentials);
     return returnLogin;
   }
-  async createUser(credentials) {
-    const registerUser = supabase.auth.signUp(credentials);
+  async createUser(credentials, name) {
+    const registerUser = supabase.auth.signUp({
+      ...credentials,
+      options: {
+        data: {
+          first_name: name,
+        },
+      },
+    });
 
     return registerUser;
     // console.log("Cria usuário");
