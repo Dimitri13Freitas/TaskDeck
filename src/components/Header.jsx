@@ -4,7 +4,7 @@ import { LogoHeader } from "../assets/LogoHeader";
 
 export const Header = () => {
   return (
-    <header className="bg-gray-800 flex py-3 gap-8 items-center px-20">
+    <header className="flex py-7 gap-8 items-center px-20">
       <Link to="/">
         <LogoHeader />
       </Link>

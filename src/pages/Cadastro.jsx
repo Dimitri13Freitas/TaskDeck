@@ -4,6 +4,7 @@ import { Logo } from "../assets/Logo";
 import { EndPoints } from "../../supabase";
 import { Input } from "../components/Input";
 import { Button } from "../components/Button";
+import { Load } from "../components/Load";
 
 const forms = [
   {
@@ -33,12 +34,8 @@ const forms = [
 ];
 
 export const Cadastro = () => {
+  const [load, setLoad] = React.useState(false);
   const supa = new EndPoints();
-  // const [nameError, setNameError] = React.useState("");
-  // const [emailError, setEmailError] = React.useState("");
-  // const [namePass, setPassError] = React.useState("");
-  // const [confirmedPass, setConfirmedPass] = React.useState("");
-
   const [form, setForm] = React.useState(() => {
     return forms.reduce((acc, e) => {
       return {
@@ -47,8 +44,6 @@ export const Cadastro = () => {
       };
     }, {});
   });
-
-  console.log(form);
 
   const [formError, setFormError] = React.useState(() => {
     return forms.reduce((acc, e) => {
@@ -131,12 +126,14 @@ export const Cadastro = () => {
   async function handleSubmit(e) {
     e.preventDefault();
     if (validateForm()) {
+      setLoad(true);
       console.log("valido");
-      const returnCadastro = supa.createUser(
+      const returnCadastro = await supa.createUser(
         { email: form.email, password: form.password },
         form.name,
       );
       console.log(returnCadastro);
+      setLoad(false);
     } else {
       console.log("não válido");
     }
@@ -155,32 +152,43 @@ export const Cadastro = () => {
 
   return (
     <div className="h-screen w-screen bg-gray-900 flex flex-col items-center justify-center">
-      <header className="flex flex-col items-center justify-center">
-        <Logo className="block" />
-        <h1 className="text-gray-100 mt-3 text-center text-2xl font-bold">
-          Task Deck
-        </h1>
-        <p className="text-gray-400 mb-4">Faça seu cadastro e comece a usar</p>
-      </header>
-      <form onSubmit={handleSubmit}>
-        {forms.map(({ id, label, placeholder, type }) => {
-          return (
-            <Input
-              key={id}
-              id={id}
-              label={label}
-              type={type}
-              placeholder={placeholder}
-              error={formError}
-              setForm={setForm}
-            />
-          );
-        })}
-        <Button className="w-full py-3" children="Entrar" />
-      </form>
-      <Link to="/" className="text-gray-400 underline mt-3 hover:text-gray-100">
-        Já possui conta? Faça login.
-      </Link>
+      <Load isVisible={load} />
+      {!load ? (
+        <>
+          <header className="flex flex-col items-center justify-center">
+            <Logo className="block" />
+            <h1 className="text-gray-100 mt-3 text-center text-2xl font-bold">
+              Task Deck
+            </h1>
+            <p className="text-gray-400 mb-4">
+              Faça seu cadastro e comece a usar
+            </p>
+          </header>
+          <Load isVisible={load} />
+          <form onSubmit={handleSubmit}>
+            {forms.map(({ id, label, placeholder, type }) => {
+              return (
+                <Input
+                  key={id}
+                  id={id}
+                  label={label}
+                  type={type}
+                  placeholder={placeholder}
+                  error={formError}
+                  setForm={setForm}
+                />
+              );
+            })}
+            <Button className="w-full py-3" children="Entrar" />
+          </form>
+          <Link
+            to="/"
+            className="text-gray-400 underline mt-3 hover:text-gray-100"
+          >
+            Já possui conta? Faça login.
+          </Link>
+        </>
+      ) : null}
     </div>
   );
 };

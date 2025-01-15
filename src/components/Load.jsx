@@ -1,7 +1,6 @@
 import React from "react";
 
 export const Load = ({ isVisible, ...props }) => {
-  console.log(isVisible);
   if (isVisible) {
     return (
       <div

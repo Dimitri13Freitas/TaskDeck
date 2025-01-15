@@ -4,9 +4,10 @@ import { Plus } from "@phosphor-icons/react";
 import { Modal } from "../components/Modal";
 import { Board } from "../components/Board";
 import { GlobalContext } from "../GlobalContext";
+import { supabase } from "../../supabase";
 
 export const Boards = () => {
-  const { board } = React.useContext(GlobalContext);
+  const { board, userContext } = React.useContext(GlobalContext);
 
   const modalRef = React.useRef();
   const [modal, setModal] = React.useState({
@@ -14,6 +15,13 @@ export const Boards = () => {
     x: "",
     y: "",
   });
+
+  // async function seila() {
+  //   const teste = await supabase.auth.getUser();
+
+  //   console.log(teste);
+  // }
+  // seila();
 
   function handleClick({ nativeEvent }) {
     setModal({

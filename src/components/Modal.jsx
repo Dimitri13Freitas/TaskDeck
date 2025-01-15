@@ -2,10 +2,13 @@ import React from "react";
 import { Input } from "./Input";
 import { Button } from "./Button";
 import { GlobalContext } from "../GlobalContext";
+import { EndPoints } from "../../supabase";
 
 export const Modal = ({ setModal, cordenates }) => {
   const { board, setBoard } = React.useContext(GlobalContext);
   const [boardName, setBoardName] = React.useState("");
+
+  const supa = new EndPoints();
 
   function normalizeString(str) {
     return str
@@ -26,7 +29,7 @@ export const Modal = ({ setModal, cordenates }) => {
     }
   }
 
-  function comfirm({ keyCode }) {
+  function confirm({ keyCode }) {
     if (keyCode === 13) handleClick();
   }
 
@@ -38,14 +41,14 @@ export const Modal = ({ setModal, cordenates }) => {
     >
       <div className="w-7 h-7 -top-2 rotate-45 left-4 bg-gray-800 absolute"></div>
       <Input
-        onKeyDown={comfirm}
+        onKeyDown={confirm}
         onChange={({ target }) => setBoardName(target.value)}
         value={boardName}
         id="modal"
-        classLabel="text-center text-gray-400 "
         label="Digite o nome do seu novo board."
-        className="lg:w-40 py-1 pl-1 bg-gray-900"
+        className="lg:w-40 mb-3 rounded outline-none py-1 pl-1 bg-gray-900 focus-within:ring-2 ring-yellow-300 text-gray-100"
         focus={cordenates.istrue}
+        error=""
       />
       <Button onClick={handleClick} children="Criar" className="py-1 px-11" />
     </div>

@@ -21,6 +21,6 @@ export class EndPoints {
     });
 
     return registerUser;
-    // console.log("Cria usuário");
+    // og("Cria usuário");
   }
 }

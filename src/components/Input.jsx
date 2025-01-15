@@ -1,6 +1,14 @@
 import React from "react";
 
-export const Input = ({ id, label, error, setForm, ...props }) => {
+export const Input = ({
+  id,
+  label,
+  error,
+  setForm,
+  className,
+  focus,
+  ...props
+}) => {
   function handleChange({ target }) {
     const { id, value } = target;
     setForm((form) => {
@@ -18,15 +26,22 @@ export const Input = ({ id, label, error, setForm, ...props }) => {
       <input
         onChange={handleChange}
         id={id}
-        className="bg-gray-800 m-0 block rounded outline-none focus-within:ring-2 ring-yellow-300 text-gray-100 py-3 pl-3 lg:w-96"
+        className={
+          className
+            ? className
+            : "bg-gray-800 m-0 block rounded outline-none focus-within:ring-2 ring-yellow-300 text-gray-100 py-3 pl-3 lg:w-96"
+        }
+        {...(focus ? { autoFocus: true } : null)}
         {...props}
       />
-      <p
-        style={{ opacity: error[id + "Error"].length != 0 ? 1 : 0 }}
-        className={"text-red-900 text-xs mb-2 mt-1"}
-      >
-        {error[id + "Error"].length != 0 ? error[id + "Error"] : "."}
-      </p>
+      {error ? (
+        <p
+          style={{ opacity: error[id + "Error"].length != 0 ? 1 : 0 }}
+          className={"text-red-900 text-xs mb-2 mt-1"}
+        >
+          {error[id + "Error"].length != 0 ? error[id + "Error"] : "."}
+        </p>
+      ) : null}
     </>
   );
 };
