@@ -5,7 +5,7 @@ export const GlobalContext = React.createContext();
 
 export const GlobalStorage = ({ children }) => {
   const [targetBoard, setTargetBoard] = React.useState(null);
-  const [userSession, setUserSession] = React.useState(false);
+  const [userSession, setUserSession] = React.useState(null);
 
   const [board, setBoard] = React.useState([
     { title: "teste 01", id: "teste-01" },
@@ -21,6 +21,7 @@ export const GlobalStorage = ({ children }) => {
     //   setUserSession(false);
     // }
     setUserSession(user);
+    console.log("user");
   }
 
   React.useEffect(() => {

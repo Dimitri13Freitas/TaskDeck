@@ -5,6 +5,7 @@ import { Modal } from "../components/Modal";
 import { Board } from "../components/Board";
 import { GlobalContext } from "../GlobalContext";
 import { supabase } from "../../supabase";
+import { Button } from "../components/Button";
 
 export const Boards = () => {
   const { board, userContext } = React.useContext(GlobalContext);
@@ -16,19 +17,18 @@ export const Boards = () => {
     y: "",
   });
 
-  // async function seila() {
-  //   const teste = await supabase.auth.getUser();
-
-  //   console.log(teste);
-  // }
-  // seila();
-
   function handleClick({ nativeEvent }) {
     setModal({
       istrue: !modal.istrue,
       y: nativeEvent.clientY + 14,
       x: nativeEvent.clientX - 28,
     });
+  }
+
+  async function teste() {
+    const { error } = await supabase.auth.signOut();
+    console.log(error);
+    console.log("teste function");
   }
 
   return (
@@ -56,6 +56,7 @@ export const Boards = () => {
             return <Board key={e.id} kanban={e} />;
           })}
         </div>
+        <Button children="sair" onClick={teste} />
       </div>
       <div
         onClick={() => setModal(!modal.istrue)}

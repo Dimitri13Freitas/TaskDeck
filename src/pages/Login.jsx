@@ -107,7 +107,7 @@ export const Login = () => {
       const returnLogin = await supa.login(form);
       console.log(returnLogin);
       if (!returnLogin.error) {
-        navigate("boards");
+        navigate("./boards");
       }
       setLoad(false);
     } else {

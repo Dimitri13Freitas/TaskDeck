@@ -11,26 +11,27 @@ import { Load } from "./components/Load";
 import { GlobalStorage } from "./GlobalContext";
 
 export function App() {
-  console.log("app");
   const supa = new EndPoints();
   const { board, targetBoard, userSession } = React.useContext(GlobalContext);
   const [loadScreen, setLoadScreen] = React.useState(true);
   const [hasSession, setHasSession] = React.useState(false);
 
-  const { data, error } = userSession;
-
   function verifySession() {
-    if (error) {
-      setHasSession(false);
-    } else {
+    const { data, error } = userSession;
+
+    if (data.session) {
+      console.log("possui sessão");
       setHasSession(true);
+    } else {
+      console.log("não possui sessão");
+      setHasSession(false);
     }
     setLoadScreen(false);
   }
 
   React.useEffect(() => {
-    verifySession();
-  }, []);
+    if (userSession) verifySession();
+  }, [userSession]);
 
   if (loadScreen) {
     return (
@@ -49,8 +50,14 @@ export function App() {
           <Routes>
             <Route path="/" element={hasSession ? <Boards /> : <Login />} />
             <Route path="/cadastro" element={<Cadastro />} />
-            <Route path="boards" element={<Boards />} />
-            <Route path={"boards/:id"} element={<Kanban id={targetBoard} />} />
+            <Route
+              path="boards"
+              element={hasSession ? <Boards /> : <Login />}
+            />
+            <Route
+              path={"boards/:id"}
+              element={hasSession ? <Kanban id={targetBoard} /> : <Login />}
+            />
           </Routes>
         </BrowserRouter>
       </GlobalStorage>
