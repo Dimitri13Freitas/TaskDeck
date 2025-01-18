@@ -5,7 +5,8 @@ export const GlobalContext = React.createContext();
 
 export const GlobalStorage = ({ children }) => {
   const [targetBoard, setTargetBoard] = React.useState(null);
-  const [userSession, setUserSession] = React.useState(null);
+  const [userInfo, setUserInfo] = React.useState(null);
+  const [hasSession, setHasSession] = React.useState(false);
 
   const [board, setBoard] = React.useState([
     { title: "teste 01", id: "teste-01" },
@@ -15,19 +16,18 @@ export const GlobalStorage = ({ children }) => {
 
   async function getUserContext() {
     const user = await supabase.auth.getSession();
-    // if (!user.error) {
-    //   setUserSession(true);
-    // } else {
-    //   setUserSession(false);
-    // }
-    setUserSession(user);
-    console.log("user");
+    if (user.data.session) {
+      setHasSession(true);
+    } else {
+      setHasSession(false);
+    }
+
+    setUserInfo(user);
   }
 
   React.useEffect(() => {
-    window.localStorage.setItem("board", targetBoard);
     getUserContext();
-  }, [targetBoard]);
+  }, []);
 
   return (
     <GlobalContext.Provider
@@ -36,7 +36,10 @@ export const GlobalStorage = ({ children }) => {
         setBoard,
         setTargetBoard,
         targetBoard,
-        userSession,
+        userInfo,
+        setHasSession,
+        hasSession,
+        getUserContext,
       }}
     >
       {children}

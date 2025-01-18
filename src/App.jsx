@@ -12,26 +12,13 @@ import { GlobalStorage } from "./GlobalContext";
 
 export function App() {
   const supa = new EndPoints();
-  const { board, targetBoard, userSession } = React.useContext(GlobalContext);
+  const { board, targetBoard, hasSession, getUserContext } =
+    React.useContext(GlobalContext);
   const [loadScreen, setLoadScreen] = React.useState(true);
-  const [hasSession, setHasSession] = React.useState(false);
-
-  function verifySession() {
-    const { data, error } = userSession;
-
-    if (data.session) {
-      console.log("possui sessão");
-      setHasSession(true);
-    } else {
-      console.log("não possui sessão");
-      setHasSession(false);
-    }
-    setLoadScreen(false);
-  }
 
   React.useEffect(() => {
-    if (userSession) verifySession();
-  }, [userSession]);
+    setLoadScreen(false);
+  }, []);
 
   if (loadScreen) {
     return (

@@ -17,12 +17,23 @@ export default {
         300: "#CBFF37",
       },
       red: {
-        900: "#C00000",
+        900: "#7f1d1d",
+        800: "#991b1b",
+        700: "#b91c1c",
       },
     },
     extend: {
       fontFamily: {
         sans: "Inter, Arial, sans-serif",
+      },
+      keyframes: {
+        slideIn: {
+          "0%": { transform: "translateX(50px)", opacity: "0" },
+          "100%": { transform: "translateX(0)", opacity: "1" },
+        },
+      },
+      animation: {
+        slideIn: "slideIn 0.5s ease-out forwards",
       },
     },
   },

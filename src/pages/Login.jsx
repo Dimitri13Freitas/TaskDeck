@@ -1,6 +1,7 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Logo } from "../assets/Logo";
+import { GlobalContext } from "../GlobalContext";
 import { EndPoints } from "../../supabase";
 import { Input } from "../components/Input";
 import { Button } from "../components/Button";
@@ -101,18 +102,15 @@ export const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoad(true);
     if (validateForm()) {
-      setLoad(true);
       console.log("valido");
       const returnLogin = await supa.login(form);
-      console.log(returnLogin);
       if (!returnLogin.error) {
-        navigate("./boards");
+        location.reload();
       }
-      setLoad(false);
     } else {
       setLoad(false);
-
       console.log("não válido");
     }
   };

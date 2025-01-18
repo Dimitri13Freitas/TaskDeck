@@ -4,11 +4,9 @@ import { Plus } from "@phosphor-icons/react";
 import { Modal } from "../components/Modal";
 import { Board } from "../components/Board";
 import { GlobalContext } from "../GlobalContext";
-import { supabase } from "../../supabase";
-import { Button } from "../components/Button";
 
 export const Boards = () => {
-  const { board, userContext } = React.useContext(GlobalContext);
+  const { board, userInfo } = React.useContext(GlobalContext);
 
   const modalRef = React.useRef();
   const [modal, setModal] = React.useState({
@@ -25,19 +23,17 @@ export const Boards = () => {
     });
   }
 
-  async function teste() {
-    const { error } = await supabase.auth.signOut();
-    console.log(error);
-    console.log("teste function");
-  }
-
   return (
     <div className="h-screen w-screen bg-gray-900">
       <Header />
       <div className="max-w-[1040px] m-auto">
         <h1 className="text-gray-400 text-2xl my-12">
-          <span className="text-gray-100 font-bold">Usuário x</span>, Bem-vindo
-          a sua central de tarefas.
+          <span className="text-gray-100 font-bold">
+            {userInfo
+              ? userInfo.data.session.user.user_metadata.first_name
+              : null}
+          </span>
+          , Bem-vindo a sua central de tarefas.
         </h1>
         <div className="flex flex-wrap gap-5">
           <button
@@ -56,7 +52,6 @@ export const Boards = () => {
             return <Board key={e.id} kanban={e} />;
           })}
         </div>
-        <Button children="sair" onClick={teste} />
       </div>
       <div
         onClick={() => setModal(!modal.istrue)}
