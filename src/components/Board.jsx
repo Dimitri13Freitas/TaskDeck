@@ -3,18 +3,28 @@ import { DotsThreeOutlineVertical, Star } from "@phosphor-icons/react";
 import { Link } from "react-router-dom";
 import { GlobalContext } from "../GlobalContext";
 
-export const Board = ({ kanban, ...props }) => {
-  const { setTargetBoard } = React.useContext(GlobalContext);
+export const Board = ({ kanban, index, ...props }) => {
+  const { setBoard, board } = React.useContext(GlobalContext);
+  const dragItem = React.useRef(0);
+  const dragOverItem = React.useRef(0);
 
   const dragEvents = {
     onDragStart(e) {
-      console.log(e);
+      e.dataTransfer.effectAllowed = "move";
+      dragItem.current = index;
+      console.log(dragItem.current);
+      console.log("startdragevent");
     },
-    onDrag(e) {
-      console.log(e);
+    onDragOver(e) {
+      e.preventDefault();
+      dragOverItem.current = index;
+      // console.log(dragOverItem.current);
     },
-    onDragEnd(e) {
-      console.log(e);
+    onDrop(e) {
+      let seila = [...board];
+      console.log(dragItem.current);
+      let teste = seila[dragItem.current];
+      console.log(teste);
     },
   };
 
@@ -25,7 +35,7 @@ export const Board = ({ kanban, ...props }) => {
       draggable="true"
       to={`./boards/${kanban.id}`}
       id={kanban.id}
-      className="rounded text-gray-100 bg-white group border border-gray-900 hover:border-borderT bg-opacity-[.03] max-w-[245px] min-h-[128px] w-full relative"
+      className="rounded text-gray-100 bg-white transition-colors group border border-gray-900 hover:border-borderT bg-opacity-[.03] max-w-[245px] min-h-[128px] w-full relative"
       {...props}
     >
       <button

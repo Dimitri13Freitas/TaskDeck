@@ -23,6 +23,13 @@ export const Boards = () => {
     });
   }
 
+  const dragEvents = {
+    onDragOver(e) {
+      e.preventDefault();
+    },
+    // onDragEnter({ target }, index) {},
+  };
+
   return (
     <div className="h-screen w-screen bg-gray-900">
       <Header />
@@ -35,7 +42,7 @@ export const Boards = () => {
           </span>
           , Bem-vindo a sua central de tarefas.
         </h1>
-        <div className="flex flex-wrap gap-5">
+        <div {...dragEvents} className="flex flex-wrap gap-5 ">
           <button
             onClick={handleClick}
             className="flex py-5 pr-14 pl-4 flex-col gap-8 group border rounded border-dashed border-yellow-300 hover:border-solid  hover:border-yellow-800 max-w-[245px] w-full"
@@ -48,8 +55,8 @@ export const Boards = () => {
             </div>
             <h3 className="text-lg text-gray-100">Create a new Board</h3>
           </button>
-          {board.map((e) => {
-            return <Board key={e.id} kanban={e} />;
+          {board.map((e, index) => {
+            return <Board key={e.id} kanban={e} index={index} />;
           })}
         </div>
       </div>
