@@ -2,7 +2,7 @@ import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Logo } from "../assets/Logo";
 import { GlobalContext } from "../GlobalContext";
-import { EndPoints } from "../../supabase";
+import { login } from "../../supabase";
 import { Input } from "../components/Input";
 import { Button } from "../components/Button";
 import { Load } from "../components/Load";
@@ -23,7 +23,6 @@ const forms = [
 ];
 
 export const Login = () => {
-  const supa = new EndPoints();
   const [load, setLoad] = React.useState(false);
   const [form, setForm] = React.useState(() => {
     return forms.reduce((acc, e) => {
@@ -105,7 +104,7 @@ export const Login = () => {
     setLoad(true);
     if (validateForm()) {
       console.log("valido");
-      const returnLogin = await supa.login(form);
+      const returnLogin = await login(form);
       if (!returnLogin.error) {
         location.reload();
       }

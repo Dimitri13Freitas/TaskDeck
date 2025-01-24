@@ -5,22 +5,29 @@ export const supabase = createClient(
   import.meta.env.VITE_ANON_KEY,
 );
 
-export class EndPoints {
-  async login(credentials) {
-    const returnLogin = await supabase.auth.signInWithPassword(credentials);
-    return returnLogin;
-  }
-  async createUser(credentials, name) {
-    const registerUser = supabase.auth.signUp({
-      ...credentials,
-      options: {
-        data: {
-          first_name: name,
-        },
-      },
-    });
+export async function login(credentials) {
+  const returnLogin = await supabase.auth.signInWithPassword(credentials);
+  return returnLogin;
+}
 
-    return registerUser;
-    // og("Cria usuário");
-  }
+export async function createUser(credentials, name) {
+  const registerUser = supabase.auth.signUp({
+    ...credentials,
+    options: {
+      data: {
+        first_name: name,
+      },
+    },
+  });
+  return registerUser;
+}
+
+export async function getBoards() {
+  const response = supabase.from("board").select();
+  return response;
+}
+
+export async function setBoards(data) {
+  const response = supabase.from("board").insert(data);
+  return response;
 }

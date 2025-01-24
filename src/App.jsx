@@ -5,13 +5,11 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Login } from "./pages/Login";
 import { Boards } from "./pages/Boards";
 import { Kanban } from "./pages/Kanban";
-import { EndPoints, supabase } from "../supabase";
 import { Cadastro } from "./pages/Cadastro";
 import { Load } from "./components/Load";
 import { GlobalStorage } from "./GlobalContext";
 
 export function App() {
-  const supa = new EndPoints();
   const { board, targetBoard, hasSession, getUserContext } =
     React.useContext(GlobalContext);
   const [loadScreen, setLoadScreen] = React.useState(true);

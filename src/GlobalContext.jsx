@@ -1,5 +1,5 @@
 import React from "react";
-import { EndPoints, supabase } from "../supabase";
+import { supabase } from "../supabase";
 
 export const GlobalContext = React.createContext();
 

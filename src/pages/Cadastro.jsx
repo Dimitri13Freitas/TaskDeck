@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Logo } from "../assets/Logo";
-import { EndPoints } from "../../supabase";
+import { createUser } from "../../supabase";
 import { Input } from "../components/Input";
 import { Button } from "../components/Button";
 import { Load } from "../components/Load";
@@ -35,7 +35,6 @@ const forms = [
 
 export const Cadastro = () => {
   const [load, setLoad] = React.useState(false);
-  const supa = new EndPoints();
   const [form, setForm] = React.useState(() => {
     return forms.reduce((acc, e) => {
       return {
@@ -128,7 +127,7 @@ export const Cadastro = () => {
     if (validateForm()) {
       setLoad(true);
       console.log("valido");
-      const returnCadastro = await supa.createUser(
+      const returnCadastro = await createUser(
         { email: form.email, password: form.password },
         form.name,
       );

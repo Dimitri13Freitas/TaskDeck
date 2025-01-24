@@ -2,13 +2,10 @@ import React from "react";
 import { Input } from "./Input";
 import { Button } from "./Button";
 import { GlobalContext } from "../GlobalContext";
-import { EndPoints } from "../../supabase";
 
 export const Modal = ({ setModal, cordenates }) => {
   const { board, setBoard } = React.useContext(GlobalContext);
   const [boardName, setBoardName] = React.useState("");
-
-  const supa = new EndPoints();
 
   function normalizeString(str) {
     return str
