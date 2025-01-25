@@ -23,11 +23,12 @@ export async function createUser(credentials, name) {
 }
 
 export async function getBoards() {
-  const response = supabase.from("board").select();
+  const response = await supabase.from("board").select();
+  console.log(response);
   return response;
 }
 
 export async function setBoards(data) {
-  const response = supabase.from("board").insert(data);
+  const response = await supabase.from("board").insert(data);
   return response;
 }

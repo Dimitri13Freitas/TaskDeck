@@ -21,7 +21,6 @@ export const GlobalStorage = ({ children }) => {
     } else {
       setHasSession(false);
     }
-
     setUserInfo(user);
   }
 

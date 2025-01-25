@@ -2,6 +2,7 @@ import React from "react";
 import { Input } from "./Input";
 import { Button } from "./Button";
 import { GlobalContext } from "../GlobalContext";
+import { setBoards } from "../../supabase";
 
 export const Modal = ({ setModal, cordenates }) => {
   const { board, setBoard } = React.useContext(GlobalContext);
@@ -15,10 +16,15 @@ export const Modal = ({ setModal, cordenates }) => {
       .toLowerCase();
   }
 
-  function handleClick() {
+  async function handleClick() {
     if (boardName !== "") {
       setModal(!cordenates.istrue);
       setBoardName("");
+      const response = await setBoards({
+        title: boardName,
+        slug: normalizeString(boardName),
+      });
+      console.log(response);
       setBoard([
         ...board,
         { title: boardName, id: normalizeString(boardName) },

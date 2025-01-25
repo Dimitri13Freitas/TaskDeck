@@ -4,8 +4,7 @@ import { Plus } from "@phosphor-icons/react";
 import { Modal } from "../components/Modal";
 import { Board } from "../components/Board";
 import { GlobalContext } from "../GlobalContext";
-import { supabase, getBoards } from "../../supabase";
-import { Load } from "../components/Load";
+import { getBoards } from "../../supabase";
 
 export const Boards = () => {
   const [load, setLoad] = React.useState(true);
@@ -17,6 +16,8 @@ export const Boards = () => {
     if (!error) {
       console.log(data);
       setBoardt(data);
+    } else {
+      console.log(error);
     }
   }
 
@@ -52,21 +53,20 @@ export const Boards = () => {
           , Bem-vindo a sua central de tarefas.
         </h1>
         <div className="flex flex-wrap gap-5 ">
+          <button
+            onClick={handleClick}
+            className="flex py-5 pr-14 pl-4 flex-col gap-8 group border rounded border-dashed border-yellow-300 hover:border-solid  hover:border-yellow-800 max-w-[245px] w-full"
+          >
+            <div className="group-hover:bg-yellow-800 bg-yellow-300 bg-opacity-20 rounded ease-in-out duration-200">
+              <Plus
+                className="text-yellow-800 group-hover:text-gray-900"
+                size={26}
+              />
+            </div>
+            <h3 className="text-lg text-gray-100">Create a new Board</h3>
+          </button>
           {boardt ? (
             <>
-              <button
-                onClick={handleClick}
-                className="flex py-5 pr-14 pl-4 flex-col gap-8 group border rounded border-dashed border-yellow-300 hover:border-solid  hover:border-yellow-800 max-w-[245px] w-full"
-              >
-                <div className="group-hover:bg-yellow-800 bg-yellow-300 bg-opacity-20 rounded ease-in-out duration-200">
-                  <Plus
-                    className="text-yellow-800 group-hover:text-gray-900"
-                    size={26}
-                  />
-                </div>
-                <h3 className="text-lg text-gray-100">Create a new Board</h3>
-              </button>
-
               {boardt.map((e, i) => (
                 <Board key={e.id} kanban={e} index={i} />
               ))}
