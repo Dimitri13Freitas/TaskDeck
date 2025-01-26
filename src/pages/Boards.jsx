@@ -1,20 +1,21 @@
 import React from "react";
 import { Header } from "../components/Header";
 import { Plus } from "@phosphor-icons/react";
-import { Modal } from "../components/Modal";
 import { Board } from "../components/Board";
 import { GlobalContext } from "../GlobalContext";
-import { getBoards } from "../../supabase";
+import { getBoards, setBoards } from "../../supabase";
+import { Modal } from "../components/Modal";
+import { Input } from "../components/Input";
+import { Button } from "../components/Button";
 
 export const Boards = () => {
-  const [load, setLoad] = React.useState(true);
-  const { board, userInfo } = React.useContext(GlobalContext);
+  const { userInfo } = React.useContext(GlobalContext);
   const [boardt, setBoardt] = React.useState();
+  const [boardName, setBoardName] = React.useState("");
 
   async function getDataBoards() {
     const { data, error } = await getBoards();
     if (!error) {
-      console.log(data);
       setBoardt(data);
     } else {
       console.log(error);
@@ -25,19 +26,42 @@ export const Boards = () => {
     getDataBoards();
   }, []);
 
-  const modalRef = React.useRef();
   const [modal, setModal] = React.useState({
-    istrue: false,
+    display: false,
     x: "",
     y: "",
   });
 
-  function handleClick({ nativeEvent }) {
+  function handleClick({ clientX, clientY }) {
     setModal({
-      istrue: !modal.istrue,
-      y: nativeEvent.clientY + 14,
-      x: nativeEvent.clientX - 28,
+      display: !modal.istrue,
+      y: clientY + 14,
+      x: clientX - 28,
     });
+  }
+
+  function normalizeString(str) {
+    return str
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .replace(/\s+/g, "-")
+      .toLowerCase();
+  }
+
+  async function addBoard() {
+    if (boardName !== "") {
+      setModal(!modal.display);
+      setBoardName("");
+      const response = await setBoards({
+        title: boardName,
+        slug: normalizeString(boardName),
+      });
+      console.log(response);
+    }
+  }
+
+  function confirm({ keyCode }) {
+    if (keyCode === 13) handleClick();
   }
 
   return (
@@ -65,6 +89,7 @@ export const Boards = () => {
             </div>
             <h3 className="text-lg text-gray-100">Create a new Board</h3>
           </button>
+
           {boardt ? (
             <>
               {boardt.map((e, i) => (
@@ -80,17 +105,27 @@ export const Boards = () => {
           )}
         </div>
       </div>
-      <div
-        onClick={() => setModal(!modal.istrue)}
-        ref={modalRef}
-        className={
-          modal.istrue
-            ? "bg-black transition-colors duration-150 ease-in-out bg-opacity-30 absolute w-full top-0 h-full"
-            : null
-        }
-      >
-        {modal.istrue && <Modal setModal={setModal} cordenates={modal} />}
-      </div>
+
+      <Modal modalState={[modal, setModal]}>
+        <div
+          onClick={(e) => e.stopPropagation()}
+          style={{ top: `${modal.y}px`, left: `${modal.x}px` }}
+          className="absolute flex flex-col z-30 items-center py-4 px-2 rounded justify-center bg-gray-800 max-w-[180px]"
+        >
+          <div className="w-7 h-7 -top-2 rotate-45 left-4 bg-gray-800 absolute"></div>
+          <Input
+            onKeyDown={confirm}
+            onChange={({ target }) => setBoardName(target.value)}
+            value={boardName}
+            id="modal"
+            label="Digite o nome do seu novo board."
+            className="lg:w-40 mb-3 rounded outline-none py-1 pl-1 bg-gray-900 focus-within:ring-2 ring-yellow-300 text-gray-100"
+            focus={modal.display}
+            error=""
+          />
+          <Button onClick={addBoard} children="Criar" className="py-1 px-11" />
+        </div>
+      </Modal>
     </div>
   );
 };

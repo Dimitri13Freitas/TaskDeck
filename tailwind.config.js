@@ -15,6 +15,7 @@ export default {
       },
       yellow: {
         800: "#C5FF21",
+        500: "#434d28",
         300: "#CBFF37",
       },
       red: {

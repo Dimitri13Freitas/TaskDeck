@@ -24,11 +24,15 @@ export async function createUser(credentials, name) {
 
 export async function getBoards() {
   const response = await supabase.from("board").select();
-  console.log(response);
   return response;
 }
 
 export async function setBoards(data) {
   const response = await supabase.from("board").insert(data);
+  return response;
+}
+
+export async function deleteBoard(slug) {
+  const response = await supabase.from("board").delete().eq("slug", slug);
   return response;
 }
