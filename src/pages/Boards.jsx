@@ -3,7 +3,7 @@ import { Header } from "../components/Header";
 import { Plus } from "@phosphor-icons/react";
 import { Board } from "../components/Board";
 import { GlobalContext } from "../GlobalContext";
-import { getBoards, setBoards } from "../../supabase";
+import { getBoards, setBoards, supabase } from "../../supabase";
 import { Modal } from "../components/Modal";
 import { Input } from "../components/Input";
 import { Button } from "../components/Button";
@@ -24,6 +24,26 @@ export const Boards = () => {
 
   React.useEffect(() => {
     getDataBoards();
+  }, []);
+
+  React.useEffect(() => {
+    const subscription = supabase
+      .channel("board")
+      .on(
+        "postgres_changes",
+        { event: "*", schema: "public", table: "board" },
+        (payload) => {
+          console.log("Realtime update:", payload);
+          if (payload.eventType === "INSERT") {
+            setBoardt((prevBoards) => [...prevBoards, payload.new]);
+          }
+        },
+      )
+      .subscribe();
+
+    return () => {
+      supabase.removeChannel(subscription);
+    };
   }, []);
 
   const [modal, setModal] = React.useState({
@@ -56,6 +76,15 @@ export const Boards = () => {
         title: boardName,
         slug: normalizeString(boardName),
       });
+      // if (response.status === 201) {
+      //   setBoardt((prev) => [
+      //     ...prev,
+      //     {
+      //       title: boardName,
+      //       slug: normalizeString(boardName),
+      //     },
+      //   ]);
+      // }
       console.log(response);
     }
   }
@@ -63,6 +92,7 @@ export const Boards = () => {
   function confirm({ keyCode }) {
     if (keyCode === 13) handleClick();
   }
+  // console.log(boardt);
 
   return (
     <div className="h-screen w-screen bg-gray-900">

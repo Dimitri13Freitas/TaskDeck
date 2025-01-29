@@ -10,6 +10,17 @@ export async function login(credentials) {
   return returnLogin;
 }
 
+export function listenInsertBoards(handleInserts) {
+  supabase
+    .channel("board")
+    .on(
+      "postgres_changes",
+      { event: "INSERT", schema: "public", table: "board" },
+      handleInserts,
+    )
+    .subscribe();
+}
+
 export async function createUser(credentials, name) {
   const registerUser = supabase.auth.signUp({
     ...credentials,

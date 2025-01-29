@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { Modal } from "./Modal";
 import { deleteBoard } from "../../supabase";
 
-export const Board = ({ kanban, index, ...props }) => {
+export const Board = ({ kanban, index, deleteFunction, ...props }) => {
   const [options, setOptions] = React.useState({
     display: false,
     y: "",
@@ -67,7 +67,7 @@ export const Board = ({ kanban, index, ...props }) => {
                   Add flag
                 </li>
                 <li
-                  onClick={({ target }) => deleteBoard(target.id)}
+                  onClick={deleteFunction}
                   id={kanban.slug}
                   className="flex flex-row p-1  hover:bg-red-900 hover:text-gray-700 transition-colors  rounded items-center gap-1"
                 >
