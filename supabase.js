@@ -45,5 +45,6 @@ export async function setBoards(data) {
 
 export async function deleteBoard(slug) {
   const response = await supabase.from("board").delete().eq("slug", slug);
+  console.log(response);
   return response;
 }

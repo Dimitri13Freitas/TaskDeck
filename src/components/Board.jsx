@@ -2,14 +2,35 @@ import React from "react";
 import { DotsThreeOutlineVertical, Trash } from "@phosphor-icons/react";
 import { Link } from "react-router-dom";
 import { Modal } from "./Modal";
-import { deleteBoard } from "../../supabase";
+import { supabase, deleteBoard } from "../../supabase";
 
-export const Board = ({ kanban, index, deleteFunction, ...props }) => {
+export const Board = ({ kanban, index, ...props }) => {
   const [options, setOptions] = React.useState({
     display: false,
     y: "",
     x: "",
   });
+
+  // React.useEffect(() => {
+  //   const subscription = supabase
+  //     .channel("board")
+  //     .on(
+  //       "postgres_changes",
+  //       { event: "*", schema: "public", table: "board" },
+  //       (payload) => {
+  //         console.log("Realtime update:", payload);
+  //         if (payload.eventType === "DELETE") {
+  //           console.log(payload);
+  //           // setBoardt((prevBoards) => [...prevBoards, payload.new]);
+  //         }
+  //       },
+  //     )
+  //     .subscribe();
+
+  //   return () => {
+  //     supabase.removeChannel(subscription);
+  //   };
+  // }, []);
 
   function handleClick(e) {
     e.preventDefault();
@@ -19,6 +40,10 @@ export const Board = ({ kanban, index, deleteFunction, ...props }) => {
       x: e.clientX + 5,
     });
   }
+
+  // function deleteBoard() {
+  //   console.log(index);
+  // }
 
   // async function optionsBoardDel({ target }) {
   //   const response = await deleteBoard(target.id);
@@ -67,7 +92,7 @@ export const Board = ({ kanban, index, deleteFunction, ...props }) => {
                   Add flag
                 </li>
                 <li
-                  onClick={deleteFunction}
+                  onClick={() => deleteBoard(kanban.slug)}
                   id={kanban.slug}
                   className="flex flex-row p-1  hover:bg-red-900 hover:text-gray-700 transition-colors  rounded items-center gap-1"
                 >

@@ -17,6 +17,8 @@ export const Boards = () => {
     const { data, error } = await getBoards();
     if (!error) {
       setBoardt(data);
+      let seila = boardt.filter((e, i) => e.slug != "coisas");
+      console.log(seila);
     } else {
       console.log(error);
     }
@@ -33,9 +35,14 @@ export const Boards = () => {
         "postgres_changes",
         { event: "*", schema: "public", table: "board" },
         (payload) => {
-          console.log("Realtime update:", payload);
+          // console.log("Realtime update:", payload);
           if (payload.eventType === "INSERT") {
             setBoardt((prevBoards) => [...prevBoards, payload.new]);
+          } else if (payload.eventType === "DELETE") {
+            console.log("deu certo", payload);
+            setBoardt((prevBoards) =>
+              prevBoards.filter((e, i) => e.id != payload.old.id),
+            );
           }
         },
       )
@@ -76,23 +83,13 @@ export const Boards = () => {
         title: boardName,
         slug: normalizeString(boardName),
       });
-      // if (response.status === 201) {
-      //   setBoardt((prev) => [
-      //     ...prev,
-      //     {
-      //       title: boardName,
-      //       slug: normalizeString(boardName),
-      //     },
-      //   ]);
-      // }
       console.log(response);
     }
   }
 
   function confirm({ keyCode }) {
-    if (keyCode === 13) handleClick();
+    if (keyCode === 13) addBoard();
   }
-  // console.log(boardt);
 
   return (
     <div className="h-screen w-screen bg-gray-900">
